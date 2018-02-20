@@ -11,7 +11,7 @@ namespace ECommerce.Data.Tests
     public class RavenDbStoreTest : TestBase
     {
         private readonly ILoggerFactory _loggerFactory;
-        private RepositoryStore<TestDocument> _repository;
+        private RepositoryStoreFactory<TestDocument> _repository;
 
         public RavenDbStoreTest()
         {
@@ -29,7 +29,7 @@ namespace ECommerce.Data.Tests
                 IsTest = true
             };
 
-            _repository = new RepositoryStore<TestDocument>("ECommerce.Data.NoSql",
+            _repository = new RepositoryStoreFactory<TestDocument>("ECommerce.Data.NoSql",
                 new ConnectionOptions { Provider = "ECommerce.Data.RavenDbProvider", ConnectionString = JsonConvert.SerializeObject(config) },
                 _loggerFactory, new MyDiagnosticSource());
         }

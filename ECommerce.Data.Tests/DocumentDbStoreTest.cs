@@ -11,7 +11,7 @@ namespace ECommerce.Data.Tests
     public class DocumentDbStoreTest : TestBase
     {
         private readonly ILoggerFactory _loggerFactory;
-        private RepositoryStore<TestDocument> _repository;
+        private RepositoryStoreFactory<TestDocument> _repository;
 
         public DocumentDbStoreTest()
         {
@@ -32,7 +32,7 @@ namespace ECommerce.Data.Tests
                 Collection = $"ConfigurationItem_{Guid.NewGuid()}"
             };
 
-            _repository = new RepositoryStore<TestDocument>(
+            _repository = new RepositoryStoreFactory<TestDocument>(
                 "ECommerce.Data.NoSql",
                 new ConnectionOptions
                 {

@@ -10,7 +10,7 @@ namespace ECommerce.Data.Tests
     public class FileDbStoreTests:TestBase
     {
         private readonly ILoggerFactory _loggerFactory;
-        private RepositoryStore<TestDocument> _repository;
+        private RepositoryStoreFactory<TestDocument> _repository;
 
         public FileDbStoreTests()
         {
@@ -21,7 +21,7 @@ namespace ECommerce.Data.Tests
         [TestInitialize]
         public void StartTestVoid()
         {
-            _repository = new RepositoryStore<TestDocument>("ECommerce.Data.FileStore",
+            _repository = new RepositoryStoreFactory<TestDocument>("ECommerce.Data.FileStore",
                 new ConnectionOptions { Provider = "FileDb", ConnectionString = new FileInfo($"data\\data_{Guid.NewGuid()}.json").FullName},
                 _loggerFactory, new MyDiagnosticSource());
         }

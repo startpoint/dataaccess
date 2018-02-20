@@ -12,7 +12,7 @@ namespace ECommerce.Data.Tests
     public class SqlLiteConfigurationStoreTest : TestBase
     {
         private readonly ILoggerFactory _loggerFactory;
-        private RepositoryStore<TestDocument> _repository;
+        private RepositoryStoreFactory<TestDocument> _repository;
 
         public SqlLiteConfigurationStoreTest()
         {
@@ -25,7 +25,7 @@ namespace ECommerce.Data.Tests
         {
             var sqlConnection = new SqlConnectionOptions { ConnectionString = $"Data Source={new FileInfo("data\\data.db").FullName}" };
 
-            _repository = new RepositoryStore<TestDocument>("ECommerce.Data.EntityFramework",
+            _repository = new RepositoryStoreFactory<TestDocument>("ECommerce.Data.EntityFramework",
                 new ConnectionOptions
                 {
                     Provider = "ECommerce.Data.EntityFramework.SqlLite",

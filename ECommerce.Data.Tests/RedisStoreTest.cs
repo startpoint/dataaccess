@@ -11,7 +11,7 @@ namespace ECommerce.Data.Tests
     public class RedisStoreTest : TestBase
     {
         private readonly ILoggerFactory _loggerFactory;
-        private RepositoryStore<TestDocument> _repository;
+        private RepositoryStoreFactory<TestDocument> _repository;
 
         public RedisStoreTest()
         {
@@ -27,7 +27,7 @@ namespace ECommerce.Data.Tests
                 Url = "localhost"
             };
 
-            _repository = new RepositoryStore<TestDocument>("ECommerce.Data.NoSql",
+            _repository = new RepositoryStoreFactory<TestDocument>("ECommerce.Data.NoSql",
                 new ConnectionOptions { Provider = "ECommerce.Data.RedisProvider", ConnectionString = JsonConvert.SerializeObject(config) },
                 _loggerFactory, new MyDiagnosticSource());
         }

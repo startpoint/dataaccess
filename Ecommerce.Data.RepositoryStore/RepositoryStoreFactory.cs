@@ -16,7 +16,7 @@ namespace Ecommerce.Data.RepositoryStore
     /// Generic Repository store to use with provider injected
     /// </summary>
     /// <typeparam name="T">The type of the model to use</typeparam>
-    public class RepositoryStore<T> : IDisposable where T:class, new()
+    public class RepositoryStoreFactory<T> : IDisposable where T:class, new()
     {
         private readonly IRepositoryStore<T> _instance;
         private readonly ILogger<T> _logger;
@@ -24,6 +24,13 @@ namespace Ecommerce.Data.RepositoryStore
         private readonly ConnectionOptions _connectionOptions;
 
         public Action<T> BeforeInsert { get; set; }
+        public Action<T> AfterInsert { get; set; }
+        public Action<T> BeforeUpdate { get; set; }
+        public Action<T> AfterUpdate { get; set; }
+        public Action<T> BeforeDelete { get; set; }
+        public Action<T> AfterDelete { get; set; }
+
+        private bool _disposed;
 
         /// <summary>
         /// base constructor
@@ -32,7 +39,7 @@ namespace Ecommerce.Data.RepositoryStore
         /// <param name="connectionOptions"></param>
         /// <param name="loggerFactory"></param>
         /// <param name="diagnosticSource"></param>
-        public RepositoryStore(string assembly, ConnectionOptions connectionOptions, ILoggerFactory loggerFactory, DiagnosticSource diagnosticSource )
+        public RepositoryStoreFactory(string assembly, ConnectionOptions connectionOptions, ILoggerFactory loggerFactory, DiagnosticSource diagnosticSource )
         {
             _instance = PluginContainer.GetInstance<IRepositoryStore<T>>(assembly);
             _logger = loggerFactory.CreateLogger<T>();
@@ -125,6 +132,8 @@ namespace Ecommerce.Data.RepositoryStore
 
             _logger.LogTrace($"End Add in {stop.Elapsed}");
 
+            AfterInsert?.Invoke(item);
+
             return new ExecutionResult<T>(item != null, item);
         }
 
@@ -171,6 +180,8 @@ namespace Ecommerce.Data.RepositoryStore
             if (connectMessage != "OK")
                 throw new ConnectionException(connectMessage);
 
+            BeforeUpdate?.Invoke(value);
+
             var stop = new Stopwatch();
             stop.Start();
 
@@ -182,6 +193,8 @@ namespace Ecommerce.Data.RepositoryStore
 
             stop.Stop();
             _logger.LogTrace($"End Update in {stop.Elapsed}");
+
+            AfterUpdate?.Invoke(value);
 
             return new ExecutionResult<T>(result != null, result);
         }
@@ -228,6 +241,8 @@ namespace Ecommerce.Data.RepositoryStore
             if (connectMessage != "OK")
                 throw new ConnectionException(connectMessage);
 
+            BeforeDelete?.Invoke(value);
+
             var stop = new Stopwatch();
             stop.Start();
 
@@ -240,6 +255,8 @@ namespace Ecommerce.Data.RepositoryStore
 
             stop.Stop();
             _logger.LogTrace($"End Remove in {stop.Elapsed}");
+
+            AfterDelete?.Invoke(value);
 
             return new ExecutionResult<T>(true, result);
         }
@@ -396,8 +413,13 @@ namespace Ecommerce.Data.RepositoryStore
 
         protected void Dispose(bool disposing)
         {
+            if (_disposed)
+                return;
+
             if(disposing)
                 _instance.Dispose();
+
+            _disposed = true;
         }
     }
 }

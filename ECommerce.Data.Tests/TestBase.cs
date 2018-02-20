@@ -7,7 +7,7 @@ namespace ECommerce.Data.Tests
 {
     public class TestBase
     {
-        public void TestInsert(RepositoryStore<TestDocument> repository,  string applicationName, string key, string value)
+        public void TestInsert(RepositoryStoreFactory<TestDocument> repository,  string applicationName, string key, string value)
         {
             var result = repository.AddAsync(new TestDocument
             {
@@ -24,7 +24,7 @@ namespace ECommerce.Data.Tests
             Assert.IsTrue(searchResult.IsSuccessful);
         }
 
-        public void TestUpdate(RepositoryStore<TestDocument> repository, string applicationName, string key, string value)
+        public void TestUpdate(RepositoryStoreFactory<TestDocument> repository, string applicationName, string key, string value)
         {
             var searchResult = repository.SearchASingleItemAsync(x => x.Key == key).Result;
 
@@ -44,7 +44,7 @@ namespace ECommerce.Data.Tests
             Assert.IsTrue(updateResult.Result.Value.Equals("mod"));
         }
 
-        public void TestDelete(RepositoryStore<TestDocument> repository, string applicationName, string key)
+        public void TestDelete(RepositoryStoreFactory<TestDocument> repository, string applicationName, string key)
         {
             var searchResult = repository.SearchASingleItemAsync(x => x.Key == key).Result;
 
@@ -63,7 +63,7 @@ namespace ECommerce.Data.Tests
             Assert.IsTrue(removeResult.IsSuccessful);
         }
 
-        public void TestInsertDuplicate(RepositoryStore<TestDocument> repository, string applicationName, string key, string value)
+        public void TestInsertDuplicate(RepositoryStoreFactory<TestDocument> repository, string applicationName, string key, string value)
         {
             Assert.ThrowsException<DuplicateNameException>(() =>
             {

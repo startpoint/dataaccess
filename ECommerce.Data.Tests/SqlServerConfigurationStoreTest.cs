@@ -11,7 +11,7 @@ namespace ECommerce.Data.Tests
     public class SqlServerConfigurationStoreTest : TestBase
     {
         private readonly ILoggerFactory _loggerFactory;
-        private RepositoryStore<TestDocument> _repository;
+        private RepositoryStoreFactory<TestDocument> _repository;
 
         public SqlServerConfigurationStoreTest()
         {
@@ -24,7 +24,7 @@ namespace ECommerce.Data.Tests
         {
             var sqlConnection = new SqlConnectionOptions { ConnectionString = @"Server=(localdb)\mssqllocaldb;Database=EFProviders.SqlServer;Trusted_Connection=True;ConnectRetryCount=3" };
 
-            _repository = new RepositoryStore<TestDocument>("ECommerce.Data.EntityFramework",
+            _repository = new RepositoryStoreFactory<TestDocument>("ECommerce.Data.EntityFramework",
                 new ConnectionOptions
                 {
                     Provider = "ECommerce.Data.EntityFramework.SqlServer",
