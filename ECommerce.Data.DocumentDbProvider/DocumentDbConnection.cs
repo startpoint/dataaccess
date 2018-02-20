@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using ECommerce.Data.NoSql;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
-using Microsoft.Azure.Documents.SystemFunctions;
 
 namespace ECommerce.Data.DocumentDbProvider
 {

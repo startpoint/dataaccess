@@ -23,8 +23,6 @@ namespace ECommerce.Data.MongoDbProvider
             _client = new MongoClient(new MongoUrl(url));
 
             CreateCollectionIfNotExistsAsync(_client, dbContextOptions.Database, dbContextOptions.Collection);
-
-            //_client.StartSession();
         }
 
         private static void CreateCollectionIfNotExistsAsync(MongoClient client, string databaseId, string collectionId)
@@ -39,7 +37,7 @@ namespace ECommerce.Data.MongoDbProvider
                 var mongoCollection = _client.GetDatabase(_documentDbConnectionOptions.Database)
                     .GetCollection<T>(_documentDbConnectionOptions.Collection);
 
-                return Enumerable.Where(mongoCollection.AsQueryable(), func).ToList();
+                return mongoCollection.AsQueryable().Where(func).ToList();
             });
         }
 

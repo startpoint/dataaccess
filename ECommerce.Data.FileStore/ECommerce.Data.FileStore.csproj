@@ -2,6 +2,18 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Authors>StartPoint Corporate</Authors>
+    <Company>StartPoint Corporate</Company>
+    <Product>Ecommerce Platform</Product>
+    <Description>a resilient abstract data access. StartPoint ECommerce.DataAccess based on Hexagonal architecture gives you the capacity to access any data source with retrying and fallback action</Description>
+    <Copyright>(c) 2018 StartPoint Corporate</Copyright>
+    <PackageLicenseUrl>https://github.com/startpoint/dataaccess/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/startpoint/dataaccess</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/startpoint/dataaccess</RepositoryUrl>
+    <RepositoryType>Github</RepositoryType>
+    <PackageTags>Data, entityframework, nosql, mongodb, documentdb, ravendb, redis</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

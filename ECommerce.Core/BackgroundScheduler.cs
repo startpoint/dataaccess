@@ -3,7 +3,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 namespace ECommerce.Core
 {
@@ -11,12 +10,12 @@ namespace ECommerce.Core
     {
 
         // Flag: Has Dispose already been called?
-        private bool _disposed = false;
+        private bool _disposed;
 
         private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
         private readonly ILogger<BackgroundWorkScheduler> _logger;
         private readonly BackgroundWorkSchedulerOptions _options;
-        private int _workInProgress = 0;
+        private int _workInProgress;
 
         public BackgroundWorkScheduler(ILogger<BackgroundWorkScheduler> logger,
                                        BackgroundWorkSchedulerOptions options)
@@ -37,7 +36,7 @@ namespace ECommerce.Core
                 {
                     foreach (var inner in ex.InnerExceptions)
                     {
-                        if (inner is TaskCanceledException cancelled)
+                        if (inner is TaskCanceledException)
                         {
                             _logger.LogInformation("Background work cancelled during shutdown.");
                         }

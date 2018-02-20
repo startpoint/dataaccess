@@ -23,6 +23,8 @@ namespace Ecommerce.Data.RepositoryStore
         private readonly DiagnosticSource _diagnosticSource;
         private readonly ConnectionOptions _connectionOptions;
 
+        public Action<T> BeforeInsert { get; set; }
+
         /// <summary>
         /// base constructor
         /// </summary>
@@ -94,6 +96,8 @@ namespace Ecommerce.Data.RepositoryStore
 
             if (connectMessage != "OK")
                 throw new ConnectionException(connectMessage);
+
+            BeforeInsert?.Invoke(value);
 
             var stop = new Stopwatch();
             stop.Start();

@@ -2,17 +2,25 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Authors>StartPoint Corporate</Authors>
+    <Company>StartPoint Corporate</Company>
+    <Product>Ecommerce Platform</Product>
+    <Description>a resilient abstract data access. StartPoint ECommerce.DataAccess based on Hexagonal architecture gives you the capacity to access any data source with retrying and fallback action</Description>
+    <Copyright>(c) 2018 StartPoint Corporate</Copyright>
+    <PackageLicenseUrl>https://github.com/startpoint/dataaccess/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/startpoint/dataaccess</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/startpoint/dataaccess</RepositoryUrl>
+    <RepositoryType>Github</RepositoryType>
+    <PackageTags>Data, entityframework, nosql, mongodb, documentdb, ravendb, redis</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="11.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="2.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational.Design" Version="2.0.0-preview1-final" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="2.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational.Design" Version="1.1.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" />
   </ItemGroup>
 
