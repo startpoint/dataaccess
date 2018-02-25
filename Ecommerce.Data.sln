@@ -9,9 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce.Data.RavenDbProvi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce.Data.RedisProvider", "ECommerce.Data.RedisProvider\ECommerce.Data.RedisProvider.csproj", "{F21C5D61-02E6-4281-B209-C3B2DAE21075}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce.Core", "ECommerce.Core\ECommerce.Core.csproj", "{EAC8AA6E-EEF4-449B-96E0-027969031179}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommerce.Data.Http", "Ecommerce.Data.Http\Ecommerce.Data.Http.csproj", "{D2482B98-EB63-4BAE-98EB-756DA20136D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce.Core", "Core\ECommerce.Core\ECommerce.Core.csproj", "{EAC8AA6E-EEF4-449B-96E0-027969031179}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommerce.Data.RepositoryStore", "Ecommerce.Data.RepositoryStore\Ecommerce.Data.RepositoryStore.csproj", "{12A2C3D8-2EE2-4D43-B30E-7359654DA91E}"
 EndProject
