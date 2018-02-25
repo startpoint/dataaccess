@@ -99,6 +99,9 @@ namespace Ecommerce.Data.RepositoryStore
         /// <returns></returns>
         public async Task<ExecutionResult<T>> AddAsync(T value)
         {
+            if(value == null)
+                throw new ArgumentNullException(nameof(value));
+
             var connectMessage = Connect();
 
             if (connectMessage != "OK")
