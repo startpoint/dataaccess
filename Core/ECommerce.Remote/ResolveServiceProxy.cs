@@ -1,20 +1,15 @@
 using System;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using Microsoft.Extensions.Logging;
+using ECommerce.Core;
 
-namespace ECommerce.Core
+namespace ECommerce.Remote
 {
     public static class ResolveServiceProxy
     {
-        public static IServiceProxy<T> CreateProxy<T>(RemoteServiceSettings remoteServiceSettings, ILoggerFactory logger) 
-        where T:class, new()
+        public static ServiceProxy CreateProxy(RemoteServiceSettings remoteServiceSettings, Func<ServiceProxy> delFunc)
         {
-            if(remoteServiceSettings.IsLocal)
-                return new LocalServiceProxy<T>(remoteServiceSettings);
-            else
-                return new RemoteServerClient<T>(remoteServiceSettings);
+            return !remoteServiceSettings.IsLocal
+                ? new LocalServiceProxy(remoteServiceSettings).GetInstance(remoteServiceSettings, delFunc)
+                : new RemoteServiceProxy(remoteServiceSettings).GetInstance(remoteServiceSettings, delFunc);
         }
     }
 }

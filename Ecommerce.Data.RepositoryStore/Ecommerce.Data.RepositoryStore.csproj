@@ -14,16 +14,13 @@
     <RepositoryUrl>https://github.com/startpoint/dataaccess</RepositoryUrl>
     <RepositoryType>Github</RepositoryType>
     <PackageTags>Data, entityframework, nosql, mongodb, documentdb, ravendb, redis</PackageTags>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <AssemblyVersion>1.0.2.0</AssemblyVersion>
     <FileVersion>1.0.2.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ECommerce.Core\ECommerce.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="ECommerce.Core" Version="1.0.2" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
   </ItemGroup>

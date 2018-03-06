@@ -36,6 +36,9 @@ namespace ECommerce.Data.FileStore
             if (!fileInfo.Exists) return "OK";
 
             var json = File.ReadAllText(_filePath);
+
+            if (string.IsNullOrEmpty(json)) return "OK";
+
             _items = JsonConvert.DeserializeObject<ConcurrentDictionary<string, T>>(json);
 
             return "OK";
@@ -113,6 +116,7 @@ namespace ECommerce.Data.FileStore
             await RemoveAsync(value, false);
             return await AddAsync(value);
         }
+
         private static PropertyInfo FindKey()
         {
             var et = typeof(T);
