@@ -14,6 +14,7 @@
     <RepositoryUrl>https://github.com/startpoint/dataaccess</RepositoryUrl>
     <RepositoryType>Github</RepositoryType>
     <PackageTags>Data, entityframework, nosql, mongodb, documentdb, ravendb, redis</PackageTags>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

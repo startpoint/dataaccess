@@ -14,10 +14,11 @@
     <RepositoryUrl>https://github.com/startpoint/dataaccess</RepositoryUrl>
     <RepositoryType>Github</RepositoryType>
     <PackageTags>Data, entityframework, nosql, mongodb, documentdb, ravendb, redis</PackageTags>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.1.0-preview1-final" />
   </ItemGroup>
 
   <ItemGroup>
